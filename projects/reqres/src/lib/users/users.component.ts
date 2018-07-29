@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ReqresService } from '../../public_api';
+import { Users } from '../model/users';
 
 @Component({
   selector: 'rr-users',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  users: Users;
+  @Input() pageNumber: number;
 
-  constructor() { }
+  constructor(private reqresService: ReqresService) { }
+
+  getUsers(): void {
+    this.reqresService.getUsers(this.pageNumber).subscribe(arg => this.users = arg);
+  }
 
   ngOnInit() {
+    this.getUsers();
   }
 
 }
