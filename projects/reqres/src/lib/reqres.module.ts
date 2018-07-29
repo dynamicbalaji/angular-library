@@ -10,6 +10,6 @@ import { UsersComponent } from './users/users.component';
     CommonModule, HttpClientModule
   ],
   declarations: [ReqresComponent, UsersComponent],
-  exports: [ReqresComponent]
+  exports: [ReqresComponent, UsersComponent]
 })
 export class ReqresModule { }
